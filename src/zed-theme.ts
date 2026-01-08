@@ -289,9 +289,9 @@ function makeZedTheme(
       error: c.states.danger,
       "error.background": alpha(c.states.danger, 0.1),
       "error.border": alpha(c.states.danger, 0.3),
-      warning: c.states.warn,
-      "warning.background": alpha(c.states.warn, 0.1),
-      "warning.border": alpha(c.states.warn, 0.3),
+      warning: c.accent.primary,
+      "warning.background": alpha(c.accent.primary, 0.1),
+      "warning.border": alpha(c.accent.primary, 0.3),
       success: c.states.success,
       "success.background": alpha(c.states.success, 0.1),
       "success.border": alpha(c.states.success, 0.3),
@@ -318,9 +318,9 @@ function makeZedTheme(
       deleted: c.states.danger,
       "deleted.background": alpha(c.states.danger, 0.1),
       "deleted.border": alpha(c.states.danger, 0.3),
-      conflict: c.states.warn,
-      "conflict.background": alpha(c.states.warn, 0.1),
-      "conflict.border": alpha(c.states.warn, 0.3),
+      conflict: c.accent.primary,
+      "conflict.background": alpha(c.accent.primary, 0.1),
+      "conflict.border": alpha(c.accent.primary, 0.3),
       hidden: c.fg.fg4,
       "hidden.background": alpha(c.fg.fg4, 0.05),
       "hidden.border": alpha(c.fg.fg4, 0.1),
@@ -393,8 +393,8 @@ function makeZedTheme(
       // Syntax highlighting
       syntax: {
         // Comments
-        comment: { color: c.syntax.comment, font_style: "italic" },
-        "comment.doc": { color: c.syntax.comment, font_style: "italic" },
+        comment: { color: c.syntax.comment },
+        "comment.doc": { color: c.syntax.comment },
 
         // Strings
         string: { color: c.syntax.string },
@@ -427,22 +427,22 @@ function makeZedTheme(
 
         // Variables
         variable: { color: c.syntax.variable },
-        "variable.builtin": { color: c.syntax.namespace },
+        "variable.builtin": { color: c.syntax.namespace },  // this, self, super
         "variable.member": { color: c.syntax.variable },
         "variable.parameter": { color: c.syntax.parameter },
         "variable.special": { color: c.syntax.namespace },
 
-        // Properties - In Zed, `property` is used for CSS property names
-        // Use blue/accent for better CSS appearance (matches VS Code's blue-ish property names)
-        property: { color: c.accent.primary },
+        // Properties - Used for JS object keys and property access
+        // Keep as variable color (orange) for JS compatibility
+        property: { color: c.syntax.variable },
 
         // ========================================
         // CSS/SCSS SPECIFIC
         // ========================================
         // CSS property names (e.g., position, display, margin) - blue
+        // These more specific scopes should override `property` for CSS
         "property.css": { color: c.accent.primary },
         "property.definition": { color: c.accent.primary },
-        // Property name is the specific tree-sitter capture
         property_name: { color: c.accent.primary },
 
         // CSS property values that are keywords (e.g., relative, flex, auto, solid)
@@ -491,6 +491,40 @@ function makeZedTheme(
 
         // ========================================
         // END CSS/SCSS SPECIFIC
+        // ========================================
+
+        // ========================================
+        // JAVASCRIPT/TYPESCRIPT SPECIFIC
+        // ========================================
+        // `this`, `self`, `super` - namespace/yellow color
+        "variable.language": { color: c.syntax.namespace },
+        this: { color: c.syntax.namespace },
+        self: { color: c.syntax.namespace },
+
+        // Class/Type names (Dropdown, BaseComponent, TypeError)
+        "type.class": { color: c.syntax.type },
+        // Note: class_name is defined in CSS section for CSS class selectors
+
+        // Object literal keys
+        "property.object": { color: c.syntax.variable },
+        property_identifier: { color: c.syntax.variable },
+        shorthand_property_identifier: { color: c.syntax.variable },
+        shorthand_property_identifier_pattern: { color: c.syntax.variable },
+
+        // Method definitions and calls
+        method_definition: { color: c.syntax.func },
+        "function.method.call": { color: c.syntax.func },
+
+        // Template literal interpolation
+        "string.template": { color: c.syntax.string },
+        template_string: { color: c.syntax.string },
+
+        // JSX
+        "tag.jsx": { color: c.syntax.tag },
+        "tag.component": { color: c.syntax.type },
+
+        // ========================================
+        // END JAVASCRIPT/TYPESCRIPT SPECIFIC
         // ========================================
 
         // Punctuation
