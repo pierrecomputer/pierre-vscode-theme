@@ -17,7 +17,7 @@ From the menu in Visual Studio Code:
 - Search for `Pierre Theme`
 - Click install
 
-You can also install or download from the [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=pierre-computer-co.pierre-vscode-theme).
+You can also install or download from the [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=pierrecomputer.pierre-theme).
 
 ### Cursor
 
@@ -27,7 +27,7 @@ From the menu in Cursor:
 - Search for `Pierre Theme`
 - Click install
 
-You can also install or download from the [Open VSX registry](https://open-vsx.org/extension/pierre-computer-co/pierre-theme).
+You can also install or download from the [Open VSX registry](https://open-vsx.org/extension/pierrecomputer/pierre-theme).
 
 ## Vibrant themes (Display P3)
 
